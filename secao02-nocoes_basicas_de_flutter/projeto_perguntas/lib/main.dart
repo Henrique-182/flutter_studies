@@ -38,11 +38,11 @@ class _PerguntaAppState extends State<PerguntaApp> {
         "respostas": ['Maria', 'João', 'Leo', 'Pedro']
       }
     ];
-     
-     List<Widget> listaDeRespostas = [];
-    for (String resposta in perguntas[_perguntaSelecionada].cast()["respostas"]) {
-      listaDeRespostas.add(Resposta(texto: resposta, onPressed: _responder));
-    }
+
+    List<String> respostas = perguntas[_perguntaSelecionada].cast()["respostas"];
+    List<Widget> widgetsDeRespostas = respostas
+        .map((texto) => Resposta(texto: texto, onPressed: _responder))
+        .toList();
 
     return MaterialApp(
       home: Scaffold(
@@ -54,7 +54,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           children: [
             Questao(texto: perguntas[_perguntaSelecionada]["texto"].toString()),
-            ...listaDeRespostas, // pega todos os elementos de 'listaDeRespostas' e as executa nessa linha
+            ...widgetsDeRespostas, // pega todos os elementos de 'widgetsDeRespostas' e as substitui nessa linha
           ],
         ),
       ),
