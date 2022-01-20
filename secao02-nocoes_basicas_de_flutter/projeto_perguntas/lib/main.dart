@@ -7,7 +7,7 @@ void main() {
 }
 
 class PerguntaApp extends StatefulWidget {
-  const PerguntaApp({ Key? key }) : super(key: key);
+  const PerguntaApp({Key? key}) : super(key: key);
 
   @override
   State<PerguntaApp> createState() => _PerguntaAppState();
@@ -20,7 +20,6 @@ class _PerguntaAppState extends State<PerguntaApp> {
     setState(() {
       _perguntaSelecionada++;
     });
-    print(_perguntaSelecionada);
   }
 
   @override
@@ -40,9 +39,18 @@ class _PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           children: [
             Questao(texto: perguntas[_perguntaSelecionada]),
-            const Resposta(texto: "Resposta 1"),
-            const Resposta(texto: "Resposta 2"),
-            const Resposta(texto: "Resposta 3"),
+            Resposta(
+              texto: "Resposta 1",
+              onPressed: _responder,
+            ),
+            Resposta(
+              texto: "Resposta 2",
+              onPressed: _responder,
+            ),
+            Resposta(
+              texto: "Resposta 3",
+              onPressed: _responder,
+            ),
           ],
         ),
       ),
